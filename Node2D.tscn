@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://white_square.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=2]
+closed = false
+polygon = PoolVector2Array( -146.225, 152.742, 142.78, 148.756, 149.103, -148.544, -152.183, -148.544 )
+
+[node name="Node2D" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -95685.0 ]
+}
+
+[node name="background" type="Sprite" parent="."]
+modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+light_mask = 3
+position = Vector2( 984.066, 386.364 )
+scale = Vector2( 14.2442, 711.283 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shadow_source" type="Sprite" parent="."]
+modulate = Color( 0.0823529, 0.27451, 0.152941, 1 )
+material = SubResource( 1 )
+position = Vector2( 524.465, 210.375 )
+scale = Vector2( 1.55832, 1.17909 )
+texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="shadow_source"]
+light_mask = 2
+position = Vector2( 0, 1.4108 )
+occluder = SubResource( 2 )
+light_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player" type="Sprite" parent="."]
+light_mask = 0
+position = Vector2( 505.937, 677.483 )
+scale = Vector2( 2.01642, 1.65218 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="player"]
+scale = Vector2( 12.7924, 12.7924 )
+texture = ExtResource( 2 )
+shadow_enabled = true
+shadow_item_cull_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
